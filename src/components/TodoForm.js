@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addNewTodo } from "../actions/todosAction";
 
 class TodoForm extends Component {
   state = {
@@ -9,13 +11,14 @@ class TodoForm extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.newTodo);
+    // console.log(this.state.newTodo);
   };
 
   onSubmit = e => {
     e.preventDefault();
 
     console.log(this.state.newTodo);
+    this.props.addNewTodo(this.state.newTodo);
 
     // Call action
   };
@@ -36,4 +39,7 @@ class TodoForm extends Component {
   }
 }
 
-export default TodoForm;
+export default connect(
+  null,
+  { addNewTodo }
+)(TodoForm);
