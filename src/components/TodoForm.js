@@ -19,6 +19,9 @@ class TodoForm extends Component {
 
     console.log(this.state.newTodo);
     this.props.addNewTodo(this.state.newTodo);
+    this.setState({
+      newTodo: ""
+    });
 
     // Call action
   };
